@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
 
+#TODO change comment to english
 # importation des données
 features_1 = np.load("C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_average.npy")
 features_2 = np.load("C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_entropy.npy")
@@ -23,19 +24,21 @@ ver_6 = np.load("C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intellig
 
 y_ver = np.load("C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_ver.npy")
 
-
+#TODO change comment to english
 # création de la matrice qui entraïne le model
 
 # features = np.array([features_1,features_2,features_3,features_4,features_5,features_6])
 features = np.array([features_2,features_3,features_5,features_6])
 features = np.transpose(features)
 
+#TODO change comment to english
 # création de la matrice pur testé le model
 
 # ver = np.array([ver_1,ver_2,ver_3,ver_4,ver_5,ver_6])
 ver = np.array([ver_2,ver_3,ver_5,ver_6])
 ver = np.transpose(ver)
 
+#TODO change comment to english
 # création et entrainement du model
 
 # knn_model = KNeighborsClassifier(n_neighbors=20)
@@ -56,7 +59,7 @@ ver = np.transpose(ver)
 # print(compteur/3386)
 
 
-
+#TODO change comment to english
 # cherccher le meilleur nombre de voisin
 
 L1=[]
