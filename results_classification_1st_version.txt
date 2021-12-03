@@ -1,0 +1,15 @@
+
+test k_neighbourg for 1 < k < 500
+for comparison it is evident that a random classifier would have 25% of accuracy, bc we have value for the label
+
+  with gray average only : 49 %  with k = 296 (best)
+  with gray entropy only : 51 %  with k = 101 (best)
+  with gray rms only : 50 %  with k = 391  (best)
+  with gray kurtosis only : 50 %  with k = 206 (best)
+  with gray skewness only : 49 %  with k = 311 (best)
+  with gray std only : 52 %  with k = 91 (best)
+
+  with entropy and skewness : 53 % with k = 126
+  with entropy skewness std rms : 59 % with k = 26
+
+  with the 6 features : 62 % with k = 16 (best)
