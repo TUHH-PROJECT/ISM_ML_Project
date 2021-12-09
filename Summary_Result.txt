@@ -1,0 +1,15 @@
+So far I have created six models via SVM:
+
+linear SVM: Basic Features, Shearlet Features, Basic Features+Shearlet
+nonlin SVM: Basic Features, Shearlet Features, Basic Features+Shearlet
+
+Note: by Basic Features I mean entropy, std, rms, skewness, kurtosis and average
+
+The performance of the six different models can be seen in the corresponding .txt files, called Report_...
+
+The best performance was achieved for the nonlinear SVM trained with the basic Features (accuracy 0.58).
+
+As soon as the wavelet features are extracted I will created 4 more models, namely
+
+linear SVM: wavelet, wavelet+basic
+nonlin SVM: wavelet, wavelet+basic
