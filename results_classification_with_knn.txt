@@ -9,7 +9,7 @@ for comparison it is evident that a random classifier would have 25% of accuracy
   with gray skewness only : 49 %  with k = 311 (best)
   with gray std only : 52 %  with k = 91 (best)
 
-  with entropy and skewness : 53 % with k = 126
-  with entropy skewness std rms : 59 % with k = 26
+  with entropy and skewness : 53 % with k = 126 (best)
+  with entropy skewness std rms : 59 % with k = 26 (best)
 
   with the 6 features : 62 % with k = 16 (best)
