@@ -7,11 +7,15 @@ from sklearn.preprocessing import MinMaxScaler, RobustScaler
 
 # importation data of the features and labels
 
+X_train = np.load(
+    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/shearlet_XtrainGray.npy")
+
 Y_train = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_train.npy")
 
 
-
+X_ver = np.load(
+    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/shearlet_XverGray.npy")
 
 Y_ver = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_ver.npy")
@@ -34,17 +38,6 @@ Y_ver = np.load(
 # c1,c2,c3,c4 = c1/len(Y_train),c2/len(Y_train),c3/len(Y_train),c4/len(Y_train)
 # print("samples are ",c1,c2,c3,c4)
 
-# create features matrix to train the model
-
-X_train = np.array([X_train_gray_average, X_train_gray_entropy, X_train_gray_kurtosis,X_train_gray_rms, X_train_gray_skewness, X_train_gray_std])
-# X_train = np.array([X_train_gray_average])
-X_train = np.transpose(X_train)
-
-# create features matrix to test the model
-
-X_ver = np.array([X_ver_gray_average, X_ver_gray_entropy, X_ver_gray_kurtosis, X_ver_gray_rms, X_ver_gray_skewness, X_ver_gray_std])
-# X_ver = np.array([X_ver_gray_average])
-X_ver = np.transpose(X_ver)
 
 # Normalization of features
 # Fit scaler on trainings data
@@ -58,8 +51,8 @@ X_ver = scaler.transform(X_ver)
 
 # creating and training the model for k neighbors
 
-weights = 'distance'
-knn_model = KNeighborsClassifier(n_neighbors=20, weights = weights)
+weights = 'uniform'
+knn_model = KNeighborsClassifier(n_neighbors=280, weights = weights)
 knn_model.fit(X_train,Y_train)
 
 predicted = knn_model.predict(X_ver)
@@ -67,40 +60,41 @@ acc = accuracy_score(Y_ver,predicted)
 print(acc)
 
 # loop to search the best numbers of neighbour between a and b with step
-a = 1
-b = 200
-step = 1
-L1=[]
-L2=[]
 
-for k in range(a,b,step):
-    knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
-    knn_model.fit(X_train,Y_train)
-    predicted = knn_model.predict(X_ver)
-    acc = accuracy_score(Y_ver, predicted)
-    L1.append(k)
-    L2.append(acc)
+# a = 150
+# b = 300
+# step = 5
+# L1=[]
+# L2=[]
+#
+# for k in range(a,b,step):
+#     knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
+#     knn_model.fit(X_train,Y_train)
+#     predicted = knn_model.predict(X_ver)
+#     acc = accuracy_score(Y_ver, predicted)
+#     L1.append(k)
+#     L2.append(acc)
+#
+#
+# max_value = max(L2)
+# index_max_value = L2.index(max_value)
+# best_n_neighbour = L1[index_max_value]
+#
+# print("best prediction is", max_value)
+# print("and it is for k =  ", best_n_neighbour)
+# plt.plot(L1, L2)
+# plt.show()
+#
+# # calculate predicted with the best_n_neighbour
+#
+# knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
+# knn_model.fit(X_train,Y_train)
+# predicted = knn_model.predict(X_ver)
+# acc = accuracy_score(Y_ver,predicted)
+# print(acc)
 
-
-max_value = max(L2)
-index_max_value = L2.index(max_value)
-best_n_neighbour = L1[index_max_value]
-
-print("best prediction is", max_value)
-print("and it is for k =  ", best_n_neighbour)
-plt.plot(L1, L2)
-plt.show()
-
-# calculate predicted with the best_n_neighbour
-
-knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
-knn_model.fit(X_train,Y_train)
-predicted = knn_model.predict(X_ver)
-acc = accuracy_score(Y_ver,predicted)
-print(acc)
-
-# #Score the model with the Classification Matrix from sklearn
-# #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
+# Score the model with the Classification Matrix from sklearn
+# For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
 labels = [0,1,2,3]
 names = ['Normal','COVID','pneumonia','Lung_Opacity']
 report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
