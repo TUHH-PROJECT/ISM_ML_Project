@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
 
-#TODO change comment to english please
+#TODO: change comment to english please
 # importation des données
 features_1 = np.load("C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_average.npy")
 features_2 = np.load("C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_entropy.npy")
