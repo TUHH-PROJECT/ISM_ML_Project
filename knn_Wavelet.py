@@ -19,7 +19,7 @@ X_train_gray_wavelet_kurtosis = np.load(
 X_train_gray_wavelet_skewness = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_wavelet_skewness_combined.npy")
 X_train_gray_wavelet_std = np.load(
-    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_wavelet_std_combined.npy")
+    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_wavelet_std_deviation_combined.npy")
 
 Y_train = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_train.npy")
@@ -38,7 +38,7 @@ X_ver_gray_wavelet_kurtosis = np.load(
 X_ver_gray_wavelet_skewness = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_ver_gray_wavelet_skewness_combined.npy")
 X_ver_gray_wavelet_std = np.load(
-    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_ver_gray_wavelet_std_combined.npy")
+    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_ver_gray_wavelet_std_deviation_combined.npy")
 
 Y_ver = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_ver.npy")
@@ -63,12 +63,13 @@ Y_ver = np.load(
 
 # create features matrix to train the model
 
-X_train = np.array([X_train_gray_wavelet_average,X_train_gray_wavelet_energy, X_train_gray_wavelet_entropy, X_train_gray_wavelet_kurtosis,X_train_gray_wavelet_rms, X_train_gray_wavelet_skewness_gray_skewness, X_train_gray_wavelet_std])
+X_train = np.array([X_train_gray_wavelet_average,X_train_gray_wavelet_energy, X_train_gray_wavelet_entropy, X_train_gray_wavelet_kurtosis,X_train_gray_wavelet_rms, X_train_gray_wavelet_skewness, X_train_gray_wavelet_std])
 X_train = np.transpose(X_train)
 
+print(X_train.shape)
 # create features matrix to test the model
 
-X_ver = np.array([X_ver_gray_wavelet_average,X_ver_gray_wavelet_energy, X_ver_gray_wavelet_entropy, X_ver_gray_wavelet_kurtosis,X_ver_gray_wavelet_rms, X_ver_gray_wavelet_skewness_gray_skewness, X_ver_gray_wavelet_std])
+X_ver = np.array([X_ver_gray_wavelet_average,X_ver_gray_wavelet_energy, X_ver_gray_wavelet_entropy, X_ver_gray_wavelet_kurtosis,X_ver_gray_wavelet_rms, X_ver_gray_wavelet_skewness, X_ver_gray_wavelet_std])
 X_ver = np.transpose(X_ver)
 
 # Normalization of features
@@ -91,44 +92,44 @@ predicted = knn_model.predict(X_ver)
 acc = accuracy_score(Y_ver,predicted)
 print(acc)
 
-# loop to search the best numbers of neighbour between a and b with step
-a = 1
-b = 200
-step = 1
-L1=[]
-L2=[]
-
-for k in range(a,b,step):
-    knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
-    knn_model.fit(X_train,Y_train)
-    predicted = knn_model.predict(X_ver)
-    acc = accuracy_score(Y_ver, predicted)
-    L1.append(k)
-    L2.append(acc)
-
-
-max_value = max(L2)
-index_max_value = L2.index(max_value)
-best_n_neighbour = L1[index_max_value]
-
-print("best prediction is", max_value)
-print("and it is for k =  ", best_n_neighbour)
-plt.plot(L1, L2)
-plt.show()
-
-# calculate predicted with the best_n_neighbour
-
-knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
-knn_model.fit(X_train,Y_train)
-predicted = knn_model.predict(X_ver)
-acc = accuracy_score(Y_ver,predicted)
-print(acc)
-
-# #Score the model with the Classification Matrix from sklearn
-# #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
-labels = [0,1,2,3]
-names = ['Normal','COVID','pneumonia','Lung_Opacity']
-report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
-print(report)
-with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_Basics.txt','w',encoding='utf-8') as f:
-    f.write(report)
+# # loop to search the best numbers of neighbour between a and b with step
+# a = 1
+# b = 200
+# step = 1
+# L1=[]
+# L2=[]
+#
+# for k in range(a,b,step):
+#     knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
+#     knn_model.fit(X_train,Y_train)
+#     predicted = knn_model.predict(X_ver)
+#     acc = accuracy_score(Y_ver, predicted)
+#     L1.append(k)
+#     L2.append(acc)
+#
+#
+# max_value = max(L2)
+# index_max_value = L2.index(max_value)
+# best_n_neighbour = L1[index_max_value]
+#
+# print("best prediction is", max_value)
+# print("and it is for k =  ", best_n_neighbour)
+# plt.plot(L1, L2)
+# plt.show()
+#
+# # calculate predicted with the best_n_neighbour
+#
+# knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
+# knn_model.fit(X_train,Y_train)
+# predicted = knn_model.predict(X_ver)
+# acc = accuracy_score(Y_ver,predicted)
+# print(acc)
+#
+# # #Score the model with the Classification Matrix from sklearn
+# # #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
+# labels = [0,1,2,3]
+# names = ['Normal','COVID','pneumonia','Lung_Opacity']
+# report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
+# print(report)
+# with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_Wavelet.txt','w',encoding='utf-8') as f:
+#     f.write(report)
