@@ -1,0 +1,5 @@
+The feature vectors have shape [[LH, HL, HH]xlen(X_ver.npy)]. For the meaning of LH, HL and HH
+see the figure I uploaded in the same path. 
+
+Instead of level 4 transform which gives 12 images, I used level 1 transformation which gives 3 images and
+extracted features from these 3 images to avoid curse of dimensionality.
