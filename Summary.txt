@@ -1,16 +1,4 @@
-Summary:
-So far I have created six models via SVM:
-
-linear SVM: Basic Features, Shearlet Features, Basic Features+Shearlet
-nonlin SVM: Basic Features, Shearlet Features, Basic Features+Shearlet
-
-Note: by Basic Features I mean entropy, std, rms, skewness, kurtosis and average
-
-The performance of the six different models can be seen in the corresponding .txt files, called Report_...
-
-The best performance was achieved for the nonlinear SVM trained with the basic Features (accuracy 0.58).
-
-As soon as the wavelet features are extracted I will created 4 more models, namely
-
-linear SVM: wavelet, wavelet+basic
-nonlin SVM: wavelet, wavelet+basic
+The best two models I created use both a nonlinear kernel and the robust scaler:
+One of the models uses the Basic Features, while the other model uses the optimal combination
+of wavelet features. Both models achieve a accurancy of 0.64. Since the Basic Features are easier 
+to extract I would recommend to use the Basic_SVM_RobustScaler model.
