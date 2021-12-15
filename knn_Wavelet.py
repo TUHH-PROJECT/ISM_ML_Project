@@ -119,24 +119,40 @@ Y_ver = np.load(
 
 # create features matrix to train the model
 
-X_train = np.array([X_train_gray_wavelet_energy_HL,
+# X_train = np.array([X_train_gray_wavelet_energy_HL,
+#                     X_train_gray_wavelet_entropy_HL,
+#                     X_train_gray_wavelet_energy_HH,
+#                     X_train_gray_wavelet_entropy_HH,
+#                     X_train_gray_wavelet_energy_LH,
+#                     X_train_gray_wavelet_entropy_LH])
+
+X_train = np.array([X_train_gray_wavelet_average_HL,
+                    X_train_gray_wavelet_energy_HL,
                     X_train_gray_wavelet_entropy_HL,
-                    X_train_gray_wavelet_energy_HH,
-                    X_train_gray_wavelet_entropy_HH,
-                    X_train_gray_wavelet_energy_LH,
-                    X_train_gray_wavelet_entropy_LH])
+                    X_train_gray_wavelet_kurtosis_HL,
+                    X_train_gray_wavelet_rms_HL,
+                    X_train_gray_wavelet_skewness_HL,
+                    X_train_gray_wavelet_std_HL])
 
 X_train = np.transpose(X_train)
 
 print(X_train.shape)
 # create features matrix to test the model
 
-X_ver = np.array([X_ver_gray_wavelet_energy_HL,
+# X_ver = np.array([X_ver_gray_wavelet_energy_HL,
+#                     X_ver_gray_wavelet_entropy_HL,
+#                     X_ver_gray_wavelet_energy_HH,
+#                     X_ver_gray_wavelet_entropy_HH,
+#                     X_ver_gray_wavelet_energy_LH,
+#                     X_ver_gray_wavelet_entropy_LH])
+
+X_ver = np.array([X_ver_gray_wavelet_average_HL,
+                    X_ver_gray_wavelet_energy_HL,
                     X_ver_gray_wavelet_entropy_HL,
-                    X_ver_gray_wavelet_energy_HH,
-                    X_ver_gray_wavelet_entropy_HH,
-                    X_ver_gray_wavelet_energy_LH,
-                    X_ver_gray_wavelet_entropy_LH])
+                    X_ver_gray_wavelet_kurtosis_HL,
+                    X_ver_gray_wavelet_rms_HL,
+                    X_ver_gray_wavelet_skewness_HL,
+                    X_ver_gray_wavelet_std_HL])
 
 X_ver = np.transpose(X_ver)
 
@@ -195,9 +211,9 @@ print(acc)
 #
 # #Score the model with the Classification Matrix from sklearn
 # #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
-labels = [0,1,2,3]
-names = ['Normal','COVID','pneumonia','Lung_Opacity']
-report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
-print(report)
-with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_Wavelet.txt','w',encoding='utf-8') as f:
-    f.write(report)
+# labels = [0,1,2,3]
+# names = ['Normal','COVID','pneumonia','Lung_Opacity']
+# report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
+# print(report)
+# with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_Wavelet.txt','w',encoding='utf-8') as f:
+#     f.write(report)

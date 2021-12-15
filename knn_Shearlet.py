@@ -61,37 +61,37 @@ print(acc)
 
 # loop to search the best numbers of neighbour between a and b with step
 
-# a = 150
-# b = 300
-# step = 5
-# L1=[]
-# L2=[]
-#
-# for k in range(a,b,step):
-#     knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
-#     knn_model.fit(X_train,Y_train)
-#     predicted = knn_model.predict(X_ver)
-#     acc = accuracy_score(Y_ver, predicted)
-#     L1.append(k)
-#     L2.append(acc)
-#
-#
-# max_value = max(L2)
-# index_max_value = L2.index(max_value)
-# best_n_neighbour = L1[index_max_value]
-#
-# print("best prediction is", max_value)
-# print("and it is for k =  ", best_n_neighbour)
-# plt.plot(L1, L2)
-# plt.show()
-#
-# # calculate predicted with the best_n_neighbour
-#
-# knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
-# knn_model.fit(X_train,Y_train)
-# predicted = knn_model.predict(X_ver)
-# acc = accuracy_score(Y_ver,predicted)
-# print(acc)
+a = 1
+b = 300
+step = 1
+L1=[]
+L2=[]
+
+for k in range(a,b,step):
+    knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
+    knn_model.fit(X_train,Y_train)
+    predicted = knn_model.predict(X_ver)
+    acc = accuracy_score(Y_ver, predicted)
+    L1.append(k)
+    L2.append(acc)
+
+
+max_value = max(L2)
+index_max_value = L2.index(max_value)
+best_n_neighbour = L1[index_max_value]
+
+print("best prediction is", max_value)
+print("and it is for k =  ", best_n_neighbour)
+plt.plot(L1, L2)
+plt.show()
+
+# calculate predicted with the best_n_neighbour
+
+knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
+knn_model.fit(X_train,Y_train)
+predicted = knn_model.predict(X_ver)
+acc = accuracy_score(Y_ver,predicted)
+print(acc)
 
 # Score the model with the Classification Matrix from sklearn
 # For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
