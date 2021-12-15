@@ -21,27 +21,19 @@ test k_neighbourg for 1 < k < 500 , weights = 'distance', and without normalizat
   with the 6 features : 64 % with k = 19(best)
 
 
-test k_neighbourg for 1 < k < 500 , weights = 'uniform', and with normalization
-
-  with the 6 features : 55 % with k = 481 (accuracy keep increasing very smoothly wiht k, seems to be bounded by 56%)
-
-
 test k_neighbourg for 1 < k < 500 , weights = 'distance', and with normalization
 
-  with the 6 features : 55 % with k = 496 (accuracy keep increasing very smoothly wiht k, seems to be bounded by 56%)
+  with the 6 features : 66 % with k = 496
 
 
 
 conclusion :
-    normalization should have upgrade our accuracy but it is not the case
-    the use of weighted knn does not change our results in normalization or not normalization
+  the best prediction is 66 % with basics features, robustscaler have been used
 
 issues :
     the lables are not uniformly sample
 
 next step :
-    try with the wavelet and shearlet features but curse of dimensionnality will surely occur
-    try with radius KNN to deal with the problems of non uniformaly samples labels
 
 sources of information :
     https://www.datacamp.com/community/tutorials/k-nearest-neighbor-classification-scikit-learn
