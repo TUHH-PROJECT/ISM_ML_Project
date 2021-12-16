@@ -3,7 +3,8 @@ import scipy.stats
 
 #Define a functions, which calculates the normalized energy:
 def normalized_energy_2d(signal):
-  energy = np.sum(signal)
+  squared = np.square(signal)
+  energy = np.sum(squared)
   energy = energy/(signal.shape[0]*signal.shape[1])
   return energy
 
