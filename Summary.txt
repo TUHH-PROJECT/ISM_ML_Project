@@ -1,4 +1,4 @@
 The best two models I created use both a nonlinear kernel and the robust scaler:
 One of the models uses the Basic Features, while the other model uses the optimal combination
-of wavelet features. Both models achieve a accurancy of 0.64. Since the Basic Features are easier 
-to extract I would recommend to use the Basic_SVM_RobustScaler model.
+of wavelet features. The Basic Feature model achieve a accurancy of 0.64, while the Wavelet Feature model achieves
+0.61.

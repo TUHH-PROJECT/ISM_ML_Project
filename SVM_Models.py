@@ -21,6 +21,7 @@ l4 = 0
 l5 = 0
 l6 = 0
 l7 = 0
+
 for Feat in Wave:
     print('Loop1:', str(l1))
     l1 = l1+1
@@ -80,9 +81,8 @@ for Feat in Wave:
 print(acc)
 print(Features)
 
-#Result: Best accurancy, with 0.641465 is produced by ['wavelet_avergae', 'wavelet_energy', 'wavelet_entropy', 'wavelet_kurtosis', 'wavelet_rms', 'wavelet_skewness']
+#Result: Best accurancy is 0.61 and is achieved with all wavelet features
 
 SVM_Classification(B, save = True, report_name = 'Report_Basic_SVM_RobustScaler.txt', model_name = 'Basic_SVM_RobustScaler.sav')
 SVM_Classification(S, save = True, report_name = 'Report_Shearlet_SVM_RobustScaler.txt', model_name = 'Shearlet_SVM_RobustScaler.sav')
-SVM_Classification(F1, save = True, report_name='Report_OptWavelet_RobustScaler.txt', model_name= 'OptWavelet_RobustScaler.sav', Feature2=F2,Feature3=F3,Feature4=F4,Feature5=F5,Feature6=F6)
-    
+SVM_Classification(F1, save = True, report_name='Report_OptWavelet_RobustScaler.txt', model_name= 'OptWavelet_RobustScaler.sav', Feature2=F2,Feature3=F3,Feature4=F4,Feature5=F5,Feature6=F6, Feature7=F7)  
