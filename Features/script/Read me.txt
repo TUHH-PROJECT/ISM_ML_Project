@@ -1,0 +1,8 @@
+Run saving_gray_images.py first.You will need X_train_gray.npy for the rest of the files.
+
+Change the path accordingly when using np.load and np.save commands.
+
+I will comment the codes later. Keep in mind that features and images are not normalized. I will also do it.
+
+All the best,
+Gürsel

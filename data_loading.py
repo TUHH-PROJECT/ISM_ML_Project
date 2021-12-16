@@ -406,7 +406,7 @@ import numpy as np
 X_train = np.load("/content/drive/MyDrive/ISM_Project_Files/Training_Verification_Split/X_train.npy")
 X_ver = np.load("/content/drive/MyDrive/ISM_Project_Files/Training_Verification_Split/X_ver.npy")
 y_train = np.load("/content/drive/MyDrive/ISM_Project_Files/Training_Verification_Split/y_train.npy")
-y_ver = np.load("/content/drive/MyDrive/ISM_Project_Files/Training_Verification_Split/y_ver.npy")
+y_ver = np.load("/content/drive/MyDrive/ISM_Project_Files/Training_Verification_Split/y_test.npy")
 
 #Inspection of the arrays: For further explanation on the arrays read the part
 #where the training and verification split was created
