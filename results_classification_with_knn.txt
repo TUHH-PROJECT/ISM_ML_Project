@@ -12,9 +12,14 @@ test knn with Wavelet_features (HL,HH,LH for energy and entropy) , weights = 'di
 test knn with Wavelet_features (all basics features in HL) , weights = 'distance', and with RobustScaler
   with the 6 features : 57.76 % with k = 21
 
+test knn with HU moments , weights = 'distance', and with RobustScaler
+  0.622 accuracy for k = 19
+
+test knn with local binnary pattern , weights = 'distance', and with RobustScaler
+  0.714 accuracy for k = 29
 
 conclusion :
-  the best prediction is 66 % with basics features, robustscaler have been used
+  the best prediction is 71 % with LBP, robustscaler have been used
 
 
 sources of information :

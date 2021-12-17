@@ -6,15 +6,15 @@ from sklearn.metrics import classification_report
 from sklearn.preprocessing import MinMaxScaler, RobustScaler
 
 # importation data of the features and labels
-X_train = np.load(
-    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_hu.npy")
+X_train_gray_lbp_hist = np.load(
+    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_train_gray_lbp_hist.npy")
 
 Y_train = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_train.npy")
 
 
-X_ver = np.load(
-    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_ver_gray_hu.npy")
+X_ver_gray_lbp_hist = np.load(
+    "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/X_ver_gray_lbp_hist.npy")
 
 Y_ver = np.load(
     "C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/Feature Vectors/y_ver.npy")
@@ -37,6 +37,13 @@ Y_ver = np.load(
 # c1,c2,c3,c4 = c1/len(Y_train),c2/len(Y_train),c3/len(Y_train),c4/len(Y_train)
 # print("samples are ",c1,c2,c3,c4)
 
+# create features matrix to train the model
+
+X_train = X_train_gray_lbp_hist
+
+# create features matrix to test the model
+
+X_ver = X_ver_gray_lbp_hist
 
 # Normalization of features
 # Fit scaler on trainings data
@@ -51,7 +58,7 @@ X_ver = scaler.transform(X_ver)
 # creating and training the model for k neighbors
 
 weights = 'distance'
-knn_model = KNeighborsClassifier(n_neighbors=20, weights = weights)
+knn_model = KNeighborsClassifier(n_neighbors=29, weights = weights)
 knn_model.fit(X_train,Y_train)
 
 predicted = knn_model.predict(X_ver)
@@ -60,7 +67,7 @@ print(acc)
 
 # loop to search the best numbers of neighbour between a and b with step
 a = 1
-b = 200
+b = 50
 step = 1
 L1=[]
 L2=[]
@@ -91,11 +98,11 @@ predicted = knn_model.predict(X_ver)
 acc = accuracy_score(Y_ver,predicted)
 print(acc)
 
-# # #Score the model with the Classification Matrix from sklearn
-# # #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
+# #Score the model with the Classification Matrix from sklearn
+# #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
 # labels = [0,1,2,3]
 # names = ['Normal','COVID','pneumonia','Lung_Opacity']
 # report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
 # print(report)
-# with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_HUmoment.txt','w',encoding='utf-8') as f:
+# with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_LBP.txt','w',encoding='utf-8') as f:
 #     f.write(report)
