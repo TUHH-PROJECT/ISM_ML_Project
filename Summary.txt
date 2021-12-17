@@ -1,4 +1,3 @@
 The best two models I created use both a nonlinear kernel and the robust scaler:
-One of the models uses the Basic Features, while the other model uses the optimal combination
-of wavelet features. The Basic Feature model achieve a accurancy of 0.64, while the Wavelet Feature model achieves
-0.61.
+One of the models uses the Basic Features, while the other model uses the features extracted by linear binary patterns.
+The Basic Feature model achieve a accurancy of 0.64, while the LBP Feature model achieves 0.73.
