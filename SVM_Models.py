@@ -9,6 +9,7 @@ F6 = 'wavelet_skewness'
 F7 = 'wavelet_std_deviation'
 B = 'Basic'
 S = 'Shearlet'
+H = 'Hu'
 
 #Best Combination for the Wavelet transform:
 Wave = [F1, F2, F3, F4, F5, F6, F7]
@@ -85,4 +86,5 @@ print(Features)
 
 SVM_Classification(B, save = True, report_name = 'Report_Basic_SVM_RobustScaler.txt', model_name = 'Basic_SVM_RobustScaler.sav')
 SVM_Classification(S, save = True, report_name = 'Report_Shearlet_SVM_RobustScaler.txt', model_name = 'Shearlet_SVM_RobustScaler.sav')
-SVM_Classification(F1, save = True, report_name='Report_OptWavelet_RobustScaler.txt', model_name= 'OptWavelet_RobustScaler.sav', Feature2=F2,Feature3=F3,Feature4=F4,Feature5=F5,Feature6=F6, Feature7=F7)  
+SVM_Classification(F1, save = True, report_name='Report_OptWavelet_RobustScaler.txt', model_name= 'OptWavelet_RobustScaler.sav', Feature2=F2,Feature3=F3,Feature4=F4,Feature5=F5,Feature6=F6, Feature7=F7)
+SVM_Classification(H, save = True, report_name = 'Report_Hu_RobustScaler.txt', model_name = 'Hu_SVM_RobustScaler.sav')
