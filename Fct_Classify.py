@@ -2,7 +2,7 @@ import numpy as np
 import os
 import pickle
 import joblib
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import RobustScaler
 
 def classify (Model, Dataset):
@@ -10,94 +10,96 @@ def classify (Model, Dataset):
         with open("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Test/test_names", "rb") as f:
             names = pickle.load(f)
         f.close()
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
+        if Model == 'KNN_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/knn_model_LBP")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_testGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'KNN_Basic':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/knn_model_Basics")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/BasicFeatures_testGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/BasicFeatures_XtrainGray.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'SVM_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/LBP_SVM_RobustScaler.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_testGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'LR_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/lr_model.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_testGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = StandardScaler().fit(train_data)
+        if Model == 'NB_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/NaiveBayesModel.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_testGray.npy')
+    
     
     if Dataset == 'Noisy_Test':
         with open("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Noisy_Test/test_noise_names", "rb") as f:
             names = pickle.load(f)
         f.close()
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
+        if Model == 'KNN_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/knn_model_LBP")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_noiseTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'KNN_Basic':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/knn_model_Basics")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/BasicFeatures_noiseTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/BasicFeatures_XtrainGray.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'SVM_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/LBP_SVM_RobustScaler.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_noiseTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'LR_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/lr_model.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_noiseTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = StandardScaler().fit(train_data)
+        if Model == 'NB_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/NaiveBayesModel.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_noiseTestGray.npy')
+            
+            
 
     if Dataset == 'Mtec':
         with open("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Mtec_test/mtec_test_names", "rb") as f:
             names = pickle.load(f)
         f.close()
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
-        if Model == :
-            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/")
-            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/')
-            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors')
-            norm = .fit(train_data)
+        if Model == 'KNN_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/knn_model_LBP")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_mtecTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'KNN_Basic':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/knn_model_Basics")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/BasicFeatures_mtecTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/BasicFeatures_XtrainGray.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'SVM_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/LBP_SVM_RobustScaler.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_mtecTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = RobustScaler().fit(train_data)
+        if Model == 'LR_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/lr_model.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_mtecTestGray.npy')
+            train_data = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy')
+            norm = StandardScaler().fit(train_data)
+        if Model == 'NB_LBP':
+            classi = joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/NaiveBayesModel.sav")
+            features = np.load('/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Testing/Features/LBP_mtecTestGray.npy')
+        
+            
     
     #Normalization
-    features_norm = norm.transform(features)
+    if Model == 'NB_LBP':
+        features_norm = features
+    else:
+        features_norm = norm.transform(features)
 
     #Prediction
     y_pred = classi.predict(features_norm)
@@ -124,7 +126,7 @@ def classify (Model, Dataset):
 
 
 Datasets = ['Test', 'Noisy_Test', 'Mtec']
-Models = []
+Models = ['KNN_LBP', 'KNN_Basic', 'SVM_LBP', 'LR_LBP', 'NB_LBP']
 
 for dataset in Datasets:
     for model in Models:
