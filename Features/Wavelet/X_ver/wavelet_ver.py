@@ -1,24 +1,27 @@
 import numpy as np
 import pywt
-import matplotlib.pyplot as plt
 import skimage.measure
 from scipy.stats import kurtosis, skew
 from numpy import mean, sqrt, square
 
-X_ver_gray = np.load("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/X_ver_gray_resized.npy")
+#Loading verification images which were resized to 256x256
+X_ver_gray = np.load("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_resized.npy")
 
+#Initializing feature vectors(Each image yields 3 sub images after wavelet transform)
 average = np.zeros((len(X_ver_gray),3))
 entropy = np.zeros((len(X_ver_gray),3))
 kurtosis_train = np.zeros((len(X_ver_gray),3))
 skewness = np.zeros((len(X_ver_gray),3))
 rms = np.zeros((len(X_ver_gray),3))
-#X_train_gray_squared = square(X_ver_gray)
 std_deviation = np.zeros((len(X_ver_gray),3))
 energy = np.zeros((len(X_ver_gray),3))
 
+#Wavelet Transform level
 n = 1
+#Transform type
 w = 'db1'
 
+#Looping through training images to transform them
 for i in range(len(X_ver_gray)):
     coeffs = pywt.wavedec2(X_ver_gray[i], wavelet=w, level=n)
     # normalize each coefficient array
@@ -27,6 +30,7 @@ for i in range(len(X_ver_gray)):
         coeffs[detail_level + 1] = [d/np.abs(d).max() for d in coeffs[detail_level + 1]]
     arr, coeff_slices = pywt.coeffs_to_array(coeffs)
 
+    # Extracting features from 3 sub images
     for j in range(3):
         if j == 0:
             part = 'da'
@@ -40,12 +44,13 @@ for i in range(len(X_ver_gray)):
         skewness[i][j] = skew(arr[coeff_slices[1][part]], axis=None)
         rms[i][j] = sqrt(mean(square(arr[coeff_slices[1][part]])))
         std_deviation[i][j] = np.std(arr[coeff_slices[1][part]])
-        energy[i][j] = np.sum(arr[coeff_slices[1][part]])//(arr[coeff_slices[1][part]].shape[0]*arr[coeff_slices[1][part]].shape[1])
+        energy[i][j] = np.sum(square(arr[coeff_slices[1][part]]))/(arr[coeff_slices[1][part]].shape[0]*arr[coeff_slices[1][part]].shape[1])
 
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_average_combined",average)
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_entropy_combined",entropy)
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_kurtosis_combined",kurtosis_train)
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_skewness_combined",skewness)
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_rms_combined",rms)
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_std_deviation_combined", std_deviation)
-np.save("C:/Users/ASUS/Desktop/ISM/python_test/Training_Verification_Split/Wavelet/X_ver/X_train_gray_wavelet_energy_combined",energy)
+#Saving images
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_average_combined",average)
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_entropy_combined",entropy)
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_kurtosis_combined",kurtosis_train)
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_skewness_combined",skewness)
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_rms_combined",rms)
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_std_deviation_combined", std_deviation)
+np.save("C:/Users/ASUS/Documents/GitHub/ISM_ML_Project/Features/Wavelet/X_ver/X_ver_gray_wavelet_energy_combined",energy)
