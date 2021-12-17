@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import MinMaxScaler, RobustScaler
+import joblib
 
 # importation data of the features and labels
 X_train_gray_average = np.load(
@@ -82,51 +83,54 @@ X_ver = scaler.transform(X_ver)
 # creating and training the model for k neighbors
 
 weights = 'distance'
-knn_model = KNeighborsClassifier(n_neighbors=20, weights = weights)
+knn_model = KNeighborsClassifier(n_neighbors=9, weights = weights)
 knn_model.fit(X_train,Y_train)
 
 predicted = knn_model.predict(X_ver)
 acc = accuracy_score(Y_ver,predicted)
 print(acc)
 
-# loop to search the best numbers of neighbour between a and b with step
-a = 1
-b = 200
-step = 1
-L1=[]
-L2=[]
+# # loop to search the best numbers of neighbour between a and b with step
+# a = 1
+# b = 200
+# step = 1
+# L1=[]
+# L2=[]
+#
+# for k in range(a,b,step):
+#     knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
+#     knn_model.fit(X_train,Y_train)
+#     predicted = knn_model.predict(X_ver)
+#     acc = accuracy_score(Y_ver, predicted)
+#     L1.append(k)
+#     L2.append(acc)
+#
+#
+# max_value = max(L2)
+# index_max_value = L2.index(max_value)
+# best_n_neighbour = L1[index_max_value]
+#
+# print("best prediction is", max_value)
+# print("and it is for k =  ", best_n_neighbour)
+# plt.plot(L1, L2)
+# plt.show()
+#
+# # calculate predicted with the best_n_neighbour
+#
+# knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
+# knn_model.fit(X_train,Y_train)
+# predicted = knn_model.predict(X_ver)
+# acc = accuracy_score(Y_ver,predicted)
+# print(acc)
+#
+# # #Score the model with the Classification Matrix from sklearn
+# # #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
+# labels = [0,1,2,3]
+# names = ['Normal','COVID','pneumonia','Lung_Opacity']
+# report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
+# print(report)
+# with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_Basics.txt','w',encoding='utf-8') as f:
+#     f.write(report)
 
-for k in range(a,b,step):
-    knn_model = KNeighborsClassifier(n_neighbors=k, weights = weights)
-    knn_model.fit(X_train,Y_train)
-    predicted = knn_model.predict(X_ver)
-    acc = accuracy_score(Y_ver, predicted)
-    L1.append(k)
-    L2.append(acc)
-
-
-max_value = max(L2)
-index_max_value = L2.index(max_value)
-best_n_neighbour = L1[index_max_value]
-
-print("best prediction is", max_value)
-print("and it is for k =  ", best_n_neighbour)
-plt.plot(L1, L2)
-plt.show()
-
-# calculate predicted with the best_n_neighbour
-
-knn_model = KNeighborsClassifier(n_neighbors = best_n_neighbour, weights = weights)
-knn_model.fit(X_train,Y_train)
-predicted = knn_model.predict(X_ver)
-acc = accuracy_score(Y_ver,predicted)
-print(acc)
-
-# #Score the model with the Classification Matrix from sklearn
-# #For more information see: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html
-labels = [0,1,2,3]
-names = ['Normal','COVID','pneumonia','Lung_Opacity']
-report = classification_report(Y_ver, predicted, labels=labels, target_names=names)
-print(report)
-with open('C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/Report_knn_Basics.txt','w',encoding='utf-8') as f:
-    f.write(report)
+ #Save the model: Reload it with: SVM= joblib.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/ML_Models/SVM/Model_name.sav")
+joblib.dump(knn_model,'C:/Users/jemho/Documents/Etude/hambourg/cours_hambourg/intelligent system in medicin/pbl/ISM_ML_Project/knn_model_Basics')
