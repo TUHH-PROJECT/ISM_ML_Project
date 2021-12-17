@@ -1,0 +1,10 @@
+              precision    recall  f1-score   support
+
+      Normal       0.74      0.85      0.80      1648
+       COVID       0.75      0.54      0.63       550
+   pneumonia       0.77      0.64      0.70       188
+Lung_Opacity       0.70      0.66      0.68      1000
+
+    accuracy                           0.73      3386
+   macro avg       0.74      0.67      0.70      3386
+weighted avg       0.73      0.73      0.73      3386

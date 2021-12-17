@@ -107,6 +107,16 @@ def SVM_Classification(Feature1, save = False, report_name = 'NoName', model_nam
         else:
             AllFeatures_XtrainGray = np.append(arr = AllFeatures_XtrainGray, values = Feature_Xtrain, axis = 1)
             AllFeatures_XverGray = np.append(arr = AllFeatures_XverGray, values = Feature_Xver, axis = 1)
+    if 'Logic Binary Pattern' in Features:
+        nFeatures = nFeatures+1
+        Feature_Xtrain = np.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_train_gray_lbp_hist.npy")
+        Feature_Xver = np.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Feature Vectors/X_ver_gray_lbp_hist.npy")
+        if nFeatures == 1:
+            AllFeatures_XtrainGray = Feature_Xtrain
+            AllFeatures_XverGray = Feature_Xver
+        else:
+            AllFeatures_XtrainGray = np.append(arr = AllFeatures_XtrainGray, values = Feature_Xtrain, axis = 1)
+            AllFeatures_XverGray = np.append(arr = AllFeatures_XverGray, values = Feature_Xver, axis = 1)
 
     #Loading the labels
     y_train = np.load("/Users/giulianotaccogna/Documents/Development/Python/ISM_ML_Project/Data/Trainings_Vectors/Grey_Train_Verification_split/y_train.npy")
